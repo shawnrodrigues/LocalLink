@@ -1,0 +1,33 @@
+{
+  "name": "locallink",
+  "version": "2.0.0",
+  "description": "Share files, stream media, and chat in real-time on your local network",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "file-sharing",
+    "media-streaming",
+    "real-time-chat",
+    "local-network",
+    "websocket",
+    "android-tv",
+    "home-server"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0",
+    "multer": "^1.4.5-lts.1",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

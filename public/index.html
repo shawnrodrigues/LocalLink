@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>LocalLink - Share, Stream & Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-enhanced.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="16" stroke="url(#gradient)" stroke-width="3" fill="none"/>
+                    <path d="M14 20h12M20 14v12" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#b537ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>LocalLink</h1>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <div class="status-indicator">
+                    <div class="status-dot" id="statusDot"></div>
+                    <span id="statusText">Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span>Home</span>
+            </a>
+            <a href="files.html" class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                    <polyline points="13 2 13 9 20 9"/>
+                </svg>
+                <span>Files</span>
+            </a>
+            <a href="player.html" class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <span>Player</span>
+            </a>
+            <a href="chat.html" class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span>Chat</span>
+            </a>
+        </nav>
+
+        </nav>
+
+        <div class="main-content home-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-hero">
+                    <div class="hero-icon">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="45" stroke="url(#heroGradient)" stroke-width="4" fill="none"/>
+                            <circle cx="60" cy="60" r="25" stroke="url(#heroGradient)" stroke-width="3" fill="none"/>
+                            <path d="M40 60h40M60 40v40" stroke="url(#heroGradient)" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            <defs>
+                                <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#b537ff;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1>Welcome to LocalLink</h1>
+                    <p class="hero-subtitle">Share files, stream media, and chat in real-time on your private network</p>
+                    <div class="network-info">
+                        <span class="info-label">Your Network IP:</span>
+                        <span class="info-value" id="localIP">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <a href="files.html" class="feature-card">
+                        <div class="feature-icon files-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" fill="none"/>
+                                <polyline points="13 2 13 9 20 9" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3>File Sharing</h3>
+                        <p>Upload and download files up to 10GB. Perfect for documents, images, and archives.</p>
+                        <div class="feature-cta">
+                            <span>Go to Files</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="player.html" class="feature-card">
+                        <div class="feature-icon player-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="5 3 19 12 5 21 5 3" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3>Media Player</h3>
+                        <p>Stream videos directly to any device. Optimized for Android TV and smart TVs.</p>
+                        <div class="feature-cta">
+                            <span>Open Player</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="chat.html" class="feature-card">
+                        <div class="feature-icon chat-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3>Real-time Chat</h3>
+                        <p>Instant messaging with everyone on your network. Fun commands and emoji reactions.</p>
+                        <div class="feature-cta">
+                            <span>Start Chatting</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-card">
+                        <h4>🔒 Private & Secure</h4>
+                        <p>Everything stays on your local network. No internet connection required.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>📱 Cross-Platform</h4>
+                        <p>Works on desktop, mobile, tablets, and smart TVs with any modern browser.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>⚡ Lightning Fast</h4>
+                        <p>No upload limits from your ISP. Transfer at full network speed.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>Local Network Media Hub • Offline Mode • Connected: <span id="connectedDevices">1 device</span></p>
+        </footer>
+    </div>
+
+    <script src="shared.js"></script>
+</body>
+</html>
